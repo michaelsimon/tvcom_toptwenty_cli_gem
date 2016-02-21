@@ -15,27 +15,7 @@ class TvcomTop20::Show
   end
 
   def self.scrape_shows
-    # show_1 = self.new
-    # show_1.name = "Game of Thrones"
-    # show_1.channel = "HBO"
-    # show_1.url = "http://www.tv.com/shows/game-of-thrones/"
-
-    # show_2 = self.new
-    # show_2.name = "Arrow"
-    # show_2.channel = "The CW"
-    # show_2.url = "http://www.tv.com/shows/arrow/"
-
-    # show_3 = self.new
-    # show_3.name = "Shield"
-    # show_3.channel = "ABC"
-    # show_3.url = "http://www.tv.com/shows/marvels-agents-of-shield/"
-    
-
-    #go to tv.com, find the shows
-    #extract the properties
-    #instantiate a show
     shows = []
-
     shows << self.scrape_show
     
   end
