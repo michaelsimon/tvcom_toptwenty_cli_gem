@@ -4,14 +4,17 @@ class TvcomTop20::Scraper
     scraped_shows = []
     doc = Nokogiri::HTML(open(url))
     shows = doc.css(".show")
-    shows.each.with_index(1) do |show, i|
-      show = {
-        :rank => i,
-        :name => show.css(".info h4 a").text,
-        :channel => show.css(".airtime").text,
-        :url => show.css(".info h4 a").attribute(href).value
-      }
-      scraped_shows << show
+    shows.each do |show|
+      begin 
+        show_hash = {
+          :name => show.css(".info h4 a").text,
+          :channel => show.css(".airtime").text,
+          :url => show.css(".info h4 a").attribute("href").value
+        } 
+        scraped_shows << show_hash
+      rescue
+        next
+      end
     end
     scraped_shows
   end
@@ -27,18 +30,18 @@ class TvcomTop20::Scraper
       :show_summary => doc.css(".description").text.strip,
       :recent_episodes => [],
       :cast_members => []
-      }
+    }
 
     episodes = doc.css(".episodes .episode")
     episodes.each do |episode|
       episode_hash = {
-      :number => episode.css(".nums").text.strip.gsub(/\s+/, ""),
-      :title => episode.css(".title").text.strip,
-      :date => episode.css(".date").text.strip,
-    }
+        :number => episode.css(".nums").text.strip.gsub(/\s+/, ""),
+        :title => episode.css(".title").text.strip,
+        :date => episode.css(".date").text.strip,
+      }
 
-    show[:recent_episodes] << episode_hash
-  end
+      show[:recent_episodes] << episode_hash
+    end
 
     actors = doc.css(".person")
     actors.each do |actor|
@@ -47,8 +50,8 @@ class TvcomTop20::Scraper
         :role => actor.css(".last_norole .role").text.strip
       }
       show[:cast_members] << actor_hash
+    end
   end
-end
 
   def self.scrape_categories(url)
   end
