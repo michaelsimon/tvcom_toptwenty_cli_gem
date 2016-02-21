@@ -7,6 +7,7 @@ class TvcomTop20::Scraper
     shows.each do |show|
       begin 
         show_hash = {
+          :rank => show.css(".num").text,
           :name => show.css(".info h4 a").text,
           :channel => show.css(".airtime").text,
           :url => show.css(".info h4 a").attribute("href").value
