@@ -20,8 +20,8 @@ class TvcomTop20::Scraper
     doc = Nokogiri::HTML(open(url))
     show = {
       :name => doc.css(".show_head h1").text,
-      #:premiere_date => doc.css(".show_head .tagline .divder").first.text, ##review
-      #:time_channel => doc.css(".show_head .tagline").text,  ##review
+      :premiere_date => doc.css(".show_head .tagline").text.split('  ')[1],
+      :time_channel => doc.css(".show_head .tagline").text.split('  ')[0],
       :user_rating => doc.css(".score").text, 
       :num_votes => doc.css(".votes").text,
       :show_summary => doc.css(".description").text.strip,
