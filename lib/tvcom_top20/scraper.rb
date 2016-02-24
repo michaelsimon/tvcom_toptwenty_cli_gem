@@ -36,25 +36,21 @@ class TvcomTop20::Scraper
     episodes = doc.css(".episodes .episode")
     episodes.each do |episode|
       episode_hash = {
-        :number => episode.css(".nums").text.strip.gsub(/\s+/, ""),
-        :title => episode.css(".title").text.strip,
-        :date => episode.css(".date").text.strip,
+        :ep_number => episode.css(".nums").text.strip.gsub(/\s+/, ""),
+        :ep_title => episode.css(".title").text.strip,
+        :ep_date => episode.css(".date").text.strip,
       }
-
       show[:recent_episodes] << episode_hash
     end
 
     actors = doc.css(".person")
     actors.each do |actor|
       actor_hash = {
-        :name => actor.css(".first_norole .name").text.strip,
-        :role => actor.css(".last_norole .role").text.strip
+        :actor_name => actor.css(".first_norole .name").text.strip,
+        :actor_role => actor.css(".last_norole .role").text.strip
       }
       show[:cast_members] << actor_hash
     end
+    show
   end
-
-  def self.scrape_categories(url)
-  end
-
 end
