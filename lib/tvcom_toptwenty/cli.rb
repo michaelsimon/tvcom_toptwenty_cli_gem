@@ -1,4 +1,4 @@
-class TvcomTop20::CLI
+class TvcomTopTwenty::CLI
 
   BASE_URL = "http://www.tv.com/"
 
@@ -14,17 +14,18 @@ class TvcomTop20::CLI
   end
 
   def list_shows
-    shows_array = TvcomTop20::Scraper.scrape_top20_shows(BASE_URL+"/shows/")
+    shows_array = TvcomTopTwenty::Scraper.scrape_toptwenty_shows(BASE_URL+"/shows/")
     # binding.pry
-    TvcomTop20::Show.create_basic_shows(shows_array) if Show.all.empty?
-    # TvcomTop20::Show.all.each |show| do
-    #   puts "\s\s\s#{show[:rank]}. #{show[:name]} on #{show[:channel]}"
-    # end
+    TvcomTopTwenty::Show.create_basic_shows(shows_array) if TvcomTopTwenty::Show.all.empty?
+    binding.pry
+    TvcomTopTwenty::Show.all.each do |show|
+      puts "\s\s\s#{show.rank}. #{show.name} on #{show.channel}"
+    end
   end
 
   def get_shows_detail
-    detail_array = TvcomTop20::Show.all.each do |show|
-      details = TvcomTop20::Scraper.scape_show_detail(BASE_URL+show.url)
+    detail_array = TvcomTopTwenty::Show.all.each do |show|
+      details = TvcomTopTwenty::Scraper.scape_show_detail(BASE_URL+show.url)
       show.add_show_details(details)
     end
   end
@@ -36,7 +37,7 @@ class TvcomTop20::CLI
       print "OR type \"list\" to see the list again OR type exit to close: "
       input = gets.strip.downcase
       if input.to_i.between?(1,20)
-        the_show = TvcomTop20::Show.all[input.to_i-1]
+        the_show = TvcomTopTwenty::Show.all[input.to_i-1]
         # binding.pry
         puts "#{the_show.name} on #{the_show.channel}"
       elsif input == "list"

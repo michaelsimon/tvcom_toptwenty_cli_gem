@@ -1,6 +1,6 @@
-class TvcomTop20::Show
-  
-  attr_accessor :name, :channel, :url, :rank, :premiere_date, :user_rating, :num_votes, :show_summary, :recent_episodes, :cast_members
+class TvcomTopTwenty::Show
+
+  attr_accessor :name, :channel, :url, :rank, :premiere_date, :user_rating, :num_votes, :show_summary, :recent_episodes, :cast_members, :time_channel
 
   @@all = []
 
@@ -12,10 +12,10 @@ class TvcomTop20::Show
   end
 
   def self.create_basic_shows(show_array)
-    show_array.each {|show| Show.new(show)}
+    show_array.each {|show| TvcomTopTwenty::Show.new(show)}
   end
 
-  def self.add_show_details(detail_hash)
+  def add_show_details(detail_hash)
     detail_hash.each do |key, value|
       self.send(("#{key}="), value)
     end

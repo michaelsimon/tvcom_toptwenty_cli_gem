@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe TvcomTop20 do
+describe TvcomTopTwenty do
   it 'has a version number' do
-    expect(TvcomTop20::VERSION).not_to be nil
+    expect(TvcomTopTwenty::VERSION).not_to be nil
   end
 
   it 'does something useful' do

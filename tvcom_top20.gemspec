@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'tvcom_top20/version'
+require 'tvcom_toptwenty/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "tvcom_top20"
-  spec.version       = TvcomTop20::VERSION
+  spec.name          = "tvcom_toptwenty"
+  spec.version       = TvcomTopTwenty::VERSION
   spec.authors       = ["michaelsimon"]
   spec.email         = ["michael.simon@gmail.com"]
 

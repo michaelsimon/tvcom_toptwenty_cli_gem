@@ -1,6 +1,6 @@
-class TvcomTop20::Scraper
+class TvcomTopTwenty::Scraper
 
-  def self.scrape_top20_shows(url)
+  def self.scrape_toptwenty_shows(url)
     scraped_shows = []
     doc = Nokogiri::HTML(open(url))
     shows = doc.css(".show")
