@@ -1,8 +1,5 @@
-# Tvcomtoptwenty
-
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/tvcom_toptwenty`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+# TV.com Top Twenty TV Shows
+This Ruby gem will allow you to display the current top 20 TV shows according to TV.com. Additionally, for each show you will be able to get additional information including channel and air times, recent episodes, and top billed cast.
 
 ## Installation
 
@@ -22,7 +19,14 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+The application can be run on its own through a Bash session. 
+
+* From your terminal run "ruby bin/tvcom_toptwenty" (assuming you are in the gem direcory).
+* You will be greeted with a listing of the top twenty shows. View more information on a show by entering its rank number into the prompt. 
+* Subsequently, to view additional shows, enter in the next rank number. 
+* If at any time you want to see the list of shows and corresponding rank numbers again, enter "list" at the prompt. 
+* Once you have found a show to watch, type "exit" at the prompt to close the application. 
+* Enjoy your show!    
 
 ## Development
 
@@ -32,10 +36,14 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/tvcom_toptwenty. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/michaelsimon/tvcom_toptwenty_cli_gem. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
 
 
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+
+## Content Copyright
+
+All show information is Copyright TV.com and CBS Interactive, Inc. and subject to their [Terms of Use](http://legalterms.cbsinteractive.com/terms-of-use).
 

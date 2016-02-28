@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["michaelsimon"]
   spec.email         = ["michael.simon@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = "A CLI Scraper Tool of TV.com's Shows Information"
+  spec.description   = "TV.com Top Twenty provides a user with a listing of the top twenty shows across all categories on TV.com. A user can then view more details on a particular show including premiere date, episode information, and cast information."
+  spec.homepage      = "https://github.com/michaelsimon/tvcom_toptwenty_cli_gem"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
@@ -27,7 +27,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_development_dependency "bundler", "~> 1.10"
+  spec.add_development_dependency "bundler", "~> 1.11.2"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec"
   spec.add_development_dependency "pry"

@@ -15,9 +15,9 @@ class TvcomTopTwenty::Show
     show_array.each {|show| TvcomTopTwenty::Show.new(show)}
   end
 
-  def add_show_details(detail_hash)
+  def self.add_show_details(detail_hash, show_id)
     detail_hash.each do |key, value|
-      self.send(("#{key}="), value)
+      self.all[show_id].send(("#{key}="), value)
     end
     self
   end

@@ -20,9 +20,9 @@ class TvcomTopTwenty::Scraper
     scraped_shows
   end
 
-  def self.scape_show_detail(url)
+  def self.scape_show_detail(url, show_id)
     doc = Nokogiri::HTML(open(url))
-    show = {
+    show_detail = {
       :name => doc.css(".show_head h1").text,
       :premiere_date => doc.css(".show_head .tagline").text.split('  ')[1],
       :time_channel => doc.css(".show_head .tagline").text.split('  ')[0],
@@ -37,10 +37,10 @@ class TvcomTopTwenty::Scraper
     episodes.each do |episode|
       episode_hash = {
         :ep_number => episode.css(".nums").text.strip.gsub(/\s+/, ""),
-        :ep_title => episode.css(".title").text.strip,
+        :ep_title => episode.css(".title").text.strip.gsub(/\r+\n+\t+/,"").gsub(/(NEXT EPISODE)/,""),
         :ep_date => episode.css(".date").text.strip,
       }
-      show[:recent_episodes] << episode_hash
+      show_detail[:recent_episodes] << episode_hash
     end
 
     actors = doc.css(".person")
@@ -49,8 +49,8 @@ class TvcomTopTwenty::Scraper
         :actor_name => actor.css(".first_norole .name").text.strip,
         :actor_role => actor.css(".last_norole .role").text.strip
       }
-      show[:cast_members] << actor_hash
+      show_detail[:cast_members] << actor_hash
     end
-    show
+    TvcomTopTwenty::Show.add_show_details(show_detail, show_id)
   end
 end
